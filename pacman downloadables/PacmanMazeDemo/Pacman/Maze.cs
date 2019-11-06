@@ -14,29 +14,29 @@ namespace Pacman
             private const int SPACESIZE = 4;
             private const int NKIBBLES = 12;
 
-        private const string INITMAP = "wwwwwwwwwwwwwwwwwwww" +
+        private const string INITMAP = "wwwwwwwwwwbwwwwwwwww" +
+                                       "wkkkkkkwwwkwwkkkkkkw" +
+                                       "wkwkkwkwwwkwwkwkkwkw" +
+                                       "wkwkwwkwwwkwwkwwkwkw" +
+                                       "wkwkkkkkkkkkkkkkkwkw" +
+                                       "wkwwkkkwwwwwwwkkwwkw" +
+                                       "wkkkkwkwkkkkkwkwwwkw" +
+                                       "wkwwwwkwkbbbkwkwwwkw" +
+                                       "wkkkkkkwkbbbkwkkkkkw" +
+                                       "wwkwwwkwkbbbkwkwwwww" +
+                                       "bkkkkkkkkwwwkkkkkkkb" +
+                                       "wwkwwwwkwwwwwkwwwkww" +
+                                       "wkkkwkkkkkkkkkwwkkkw" +
+                                       "wkkkkkwwwkbkwwwkkkkw" +
+                                       "wkwwkwwwwkkkwwwkwwkw" +
+                                       "wkwwkwwwkkkkkwwkwwkw" +
+                                       "wkkkkwwwkwkwkwwkkkkw" +
+                                       "wkwwkwwkkwkwkkwkwwkw" +
                                        "wkkkkkkkkkkkkkkkkkkw" +
-                                       "wkwwwwwwwwwwwwwwwwkw" +
-                                       "wkwwwwwwwwwwwwwwwwkw" +
-                                       "wkwwwwwwwwwwwwwwwwkw" +
-                                       "wkwwwwkwwwwwkwwwwwkw" +
-                                       "wkwwwwkwwwwwkwwwwwkw" +
-                                       "wkwwwwkwwwwwkwwwwwkw" +
-                                       "wkkwwwkkbbbbkkwwwkkw" +
-                                       "wwkwwwkwbbbbwkwwwkww" +
-                                       "bkkkkkkwbbbbwkkkkkkb" +
-                                       "wwkwwwkwwwwwwkwwwkww" +
-                                       "wkkwwwkkkkkkkkwwwkkw" +
-                                       "wkwwwwwwwwwwwwwwwwkw" +
-                                       "wkwwwwwwwwwwwwwwwwkw" +
-                                       "wkwwwwwwwwwwwwwwwwkw" +
-                                       "wkwwwwwwwwwwwwwwwwkw" +
-                                       "wkwwwwwwwwwwwwwwwwkw" +
-                                       "wkkkkkkkkkkkkkkkkkkw" +
-                                       "wwwwwwwwwwwwwwwwwwww";
+                                       "wwwwwwwwwwbwwwwwwwww";
 
             //fields
-        private string map;
+            private string map;
             private int nKibbles;
             private Bitmap wall;
             private Bitmap kibble;
@@ -114,6 +114,7 @@ namespace Pacman
                                  break;
                          }
                      }
-            }           
+            }
+        public string Map{ get => map; set => map = value; }
         }
 }
