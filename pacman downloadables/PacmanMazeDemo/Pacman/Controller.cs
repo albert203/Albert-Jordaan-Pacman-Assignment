@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pacman
 {
-    class Controller
+    public class Controller
     {
     }
 }

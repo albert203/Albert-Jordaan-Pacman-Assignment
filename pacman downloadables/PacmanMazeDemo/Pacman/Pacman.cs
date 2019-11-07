@@ -15,7 +15,7 @@ namespace Pacman
         private Point position;
         protected Bitmap sprite;
 
-        public Pacman(List<Bitmap> sprites, Maze maze, Point position): base(icons, maze, position)
+        public Pacman(List<Bitmap> sprites, Maze maze, Point position) : base(icons, maze, position)
         {
             //constructor
             this.sprites = sprites;
