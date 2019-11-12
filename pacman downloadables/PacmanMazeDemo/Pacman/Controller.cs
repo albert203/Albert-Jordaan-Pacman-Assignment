@@ -7,5 +7,6 @@ namespace Pacman
 {
     public class Controller
     {
+        
     }
 }
