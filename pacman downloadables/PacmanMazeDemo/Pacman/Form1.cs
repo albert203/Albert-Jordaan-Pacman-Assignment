@@ -18,15 +18,11 @@ namespace Pacman
         private const int FORMHEIGHT = 540;
         private const int FORMWIDTH = 540;
 
-        private int leftghost1, leftghost2, leftghost3, leftghost4, left;
-        private int topghost1, topghost2, topghost3, topghost4, top;
-        private int next, direction, temp = 1;
-
-        
+        private Controller controller;
 
         private void label1_Click(object sender, EventArgs e)
         {
-            //clicking on "play game" in the menu, this hides the menu panel and resets the game with a small delay to load into the new game
+            //clicking on "play game" in the menu, this hides the menu panel and resets the game with a small delay to load into the new game. Also brings in a 3,2,1 start timer before the game starts
             panel1.Visible = false;
             Thread.Sleep(2000);
 
@@ -48,15 +44,11 @@ namespace Pacman
             Application.Exit();
         }
 
-        private bool pacmanturn, ghost1turn, ghost2turn, ghost3turn, ghost4turn, start, ghost1caneat, ghost2caneat, ghost3caneat, ghost4caneat, g1eat, g2eat, g3eat, g4eat;
-        private bool dir1, dir2, dir3, dir4, c, Supermod, Supermod1, Supermod2, Supermod3, Supermod4, v1, v2, v3, v4, tresec = true;
-        private int random1, random2, random3, random4, tic4, tic5, tic6, point;
-
-
-        //declare the Maze object, random variable and in-form labels so it can be used throughout the form
+        //declare the Maze object, random variable so it can be used throughout the form.
         private Pacman pacman;
         private Random random;
         private Maze maze;
+        private int next = 0;
         //private List<object> labels;
 
         public Form1()
@@ -70,7 +62,7 @@ namespace Pacman
             //adding a label from my list of labels
             //for (int i = 0; i < 3; i++)
             //{
-                //labels.add(label[i]);
+            //labels.add(label[i]);
             //}
 
             // set the Properties of the form:
@@ -80,7 +72,7 @@ namespace Pacman
             Width = FORMWIDTH;
 
             // create a Bitmap object for each image you want to display
-            Bitmap k = Properties.Resources.kibble;    
+            Bitmap k = Properties.Resources.kibble;
             Bitmap w = Properties.Resources.wall;
             Bitmap b = Properties.Resources.blank;
 
@@ -110,7 +102,7 @@ namespace Pacman
             //resetall();
         }
 
-
+        //player inputs an arrow key then it detects which pacman animation to produce for that movement
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
@@ -134,10 +126,59 @@ namespace Pacman
                 Close();
             }
 
-            pacman.animatedirection();
-            //temp = GetNextControl;
-        }
+            if (!pacopen)
+            {
+                switch (direction)
+                {
+                    case 1:
+                        if (next == 2)
+                        {
+                            left = 2;
+                            pacsprite = Properties.Resources.pacman1left;
+                            direction = next;
+                            temp = next;
+                        }
+                        break;
 
-        
+                    case 2:
+                        if (next == 1)
+                        {
+                            left = -2;
+                            pacsprite = Properties.Resources.pacman1right;
+                            direction = next;
+                            temp = next;
+                        }
+                        break;
+
+                    case 3:
+                        if (next == 4)
+                        {
+                            top = 2;
+                            pacsprite = Properties.Resources.pacman1down;
+                            direction = next;
+                            temp = next;
+                        }
+                        break;
+
+                    case 4:
+                        if (next == 3)
+                        {
+                            top = -2;
+                            pacsprite = Properties.Resources.pacman1up;
+                            direction = next;
+                            temp = next;
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                switch (direction)
+                {
+
+                }
+            }
+        }
     }
+}
 }
