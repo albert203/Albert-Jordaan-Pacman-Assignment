@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Character.cs" />
     <Compile Include="Controller.cs" />
+    <Compile Include="Enumdir.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

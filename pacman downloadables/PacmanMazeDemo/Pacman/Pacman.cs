@@ -11,29 +11,18 @@ namespace Pacman
     public class Pacman : Character
     {
         //fields
-        protected List<Bitmap> sprites;
-        protected Maze maze;
-        private Keys direction;
-        private Point position;
-        protected Bitmap pacsprite;
-        private const int GRIDLINESIZE = 20;
-        
-
-        private int life = 3;
-        private int top = 0, left = 0, next = 0, temp = 1;
-
+        private int life;
         private bool pacopen;
 
         public Pacman(List<Bitmap> sprites, Maze maze, Point position) : base(sprites, maze, position)
         {
-
             //constructor
-            pacopen = false;
             this.sprites = sprites;
             this.maze = maze;
             this.position = position;
-            sprite = sprites[0];
-
+            sprite = Properties.Resources.pacman1right;
+            life = 3;
+            pacopen = false;
 
         }
 
@@ -50,72 +39,73 @@ namespace Pacman
 
         public bool Eatpellets()
         {
-            bool eat = false;
+            bool eatpellets = false;
 
             if (maze.Map.Substring((position.Y * GRIDLINESIZE) + position.X, 1) == "k")
             {
-                StringBuilder stringbuilding = new StringBuilder(maze.Map);
-                char blank = 'b';
-                stringbuilding[(position.Y * GRIDLINESIZE) + position.X] = blank;
-                maze.Map = stringbuilding.ToString();
-                eat = true;
+                StringBuilder stringgrid = new StringBuilder(maze.Map);
+                char blankgrid = 'b';
+                stringgrid[(position.Y * GRIDLINESIZE) + position.X] = blankgrid;
+                maze.Map = stringgrid.ToString();
+                eatpellets = true;
             }
-            return eat;
+            return eatpellets;
         }
 
-        public void animatedirection()
+        public void animateddirection()
         {
-            if (!pacopen)
+            switch (direction)
             {
-                switch (direction)
-                {
-                    case 1:
-                        if (next == 2)
-                        {
-                            left = 2;
-                            pacsprite = Properties.Resources.pacman1left;
-                            direction = next;
-                            temp = next;
-                        }
-                        break;
+                case Enumdir.Left:
+                    {
+                        sprite = Properties.Resources.ResourceManager.GetObject("pacman;
+                    }
+                    break;
 
-                    case 2:
-                        if (next == 1)
-                        {
-                            left = -2;
-                            pacsprite = Properties.Resources.pacman1right;
-                            direction = next;
-                            temp = next;
-                        }
-                        break;
+                case Enumdir.Right:
+                    {
+                        sprite = Properties.Resources.pacman1right;
+                    }
+                    break;
 
-                    case 3:
-                        if (next == 4)
-                        {
-                            top = 2;
-                            pacsprite = Properties.Resources.pacman1down;
-                            direction = next;
-                            temp = next;
-                        }
-                        break;
+                case Enumdir.Down:
+                    {
+                        sprite = Properties.Resources.pacman1up;
+                    }
+                    break;
 
-                    case 4:
-                        if (next == 3)
-                        {
-                            top = -2;
-                            pacsprite = Properties.Resources.pacman1up;
-                            direction = next;
-                            temp = next;
-                        }
-                        break;
-                }
+                case Enumdir.Up:
+                    {
+                        sprite = Properties.Resources.pacman1down;
+                    }
+                    break;
             }
-            else
-            {
-                switch (direction)
-                {
 
-                }
+            switch (direction)
+            {
+                case Enumdir.Left:
+                    {
+                        sprite = Properties.Resources.pacman2right;
+                    }
+                    break;
+
+                case Enumdir.Right:
+                    {
+                        sprite = Properties.Resources.pacman2left;
+                    }
+                    break;
+
+                case Enumdir.Up:
+                    {
+                        sprite = Properties.Resources.pacman2up;
+                    }
+                    break;
+
+                case Enumdir.Down:
+                    {
+                        sprite = Properties.Resources.pacman2down;
+                    }
+                    break;
             }
         }
     }
@@ -169,6 +159,8 @@ namespace Pacman
     //                eat();
     //            }
     //        }
+
+
 }
 
 

@@ -43,7 +43,7 @@ namespace Pacman
         private Bitmap blank;
 
 
-        public Maze(Bitmap k, Bitmap w, Bitmap b): base()
+        public Maze(Bitmap k, Bitmap w, Bitmap b)
         {
             //constructor
             //initialise fields
@@ -52,6 +52,15 @@ namespace Pacman
             kibble = k;
             blank = b;
             nKibbles = NKIBBLES;
+            int totalCells = NROWSCOLUMNS * NROWSCOLUMNS;
+
+            for (int i = 0; i < totalCells; i++)
+            {
+                if (map.Substring(i, 1) == "k")
+                {
+                    nKibbles++;
+                }
+            }
 
             // set position of maze on the Form
             Top = 0;
@@ -116,5 +125,6 @@ namespace Pacman
             }
         }
         public string Map { get => map; set => map = value; }
+        public int NKibbles { get => nKibbles; set => nKibbles = value; }
     }
 }
