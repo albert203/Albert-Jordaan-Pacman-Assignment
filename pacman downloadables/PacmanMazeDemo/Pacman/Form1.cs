@@ -11,7 +11,7 @@
  * The ghosts are trying to catch Pacman, when one of them touches Pac-Man, a life is lost.
  * When all Pacman’s lives have been lost the game ends.
  * 
- * Deviations: Due to GiLab being unable to push to the server (because of server space issues) I have pushed up to GitHub instead.
+ * Deviations: Due to GiLab being unable to push to the server (because of server space issues) I have pushed up to GitHub instead. 
  */
 
 using System;
@@ -45,17 +45,9 @@ namespace Pacman
 
         public Form1()
         {
+            //when the start button is pressed it will intialise the form with its maze components and a timer set to an interval of 150;
             InitializeComponent();
            
-            //constuctor, intialising newly called components 
-            //labels = new List<object>();
-
-            //adding a label from my list of labels
-            //for (int i = 0; i < 3; i++)
-            //{
-            //labels.add(label[i]);
-            //}
-
             // set the Properties of the form:
             Top = 0;
             Left = 0;
@@ -75,7 +67,7 @@ namespace Pacman
             controller = new Controller(maze);
 
             // remember the Timer Enabled Property is set to false as a default
-            timer1.Interval = 200;
+            timer1.Interval = 50;
             timer1.Enabled = true;
         }
 
@@ -83,19 +75,9 @@ namespace Pacman
         {
             //clicking on "play game" in the menu, this hides the menu panel and resets the game with a small delay to load into the new game. Also brings in a 3,2,1 start timer before the game starts
             panel1.Visible = false;
-            Thread.Sleep(2000);
-
-            label3.Visible = true;
             Thread.Sleep(1000);
-            label3.Visible = false;
+            MessageBox.Show("You are Pacman, A yellow hungry circle.\nYou must manevouer throughout the maze avoiding the ghosts and eat all the kibble to win!");
 
-            label4.Visible = true;
-            Thread.Sleep(1000);
-            label4.Visible = false;
-
-            label5.Visible = true;
-            Thread.Sleep(1000);
-            label5.Visible = false;
         }
         private void label2_Click(object sender, EventArgs e)
         {
@@ -149,7 +131,7 @@ namespace Pacman
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

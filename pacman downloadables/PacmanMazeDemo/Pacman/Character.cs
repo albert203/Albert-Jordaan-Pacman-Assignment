@@ -7,6 +7,12 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
+    /*This is the parent class of the “Pacman” class and the “Ghost” class. 
+     *The parent class contains methods such as the Draw() method, 
+     *that draws the sprite image onto a specific grid on the form, 
+     *and the Move() method that  are used between the  between the 
+     *child classes to share similar class methods.
+     */
     public abstract class Character
     {
         //fields

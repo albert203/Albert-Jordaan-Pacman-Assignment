@@ -7,7 +7,10 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
-    /*
+    /*The controller class calls in all the other methods from the classes, 
+     * such as pacman.Move(), and initializes them together in my Playgame() method. 
+     * The controller class also calls in all the list of sprite entities (pacman and the four ghosts) 
+     * and all its variations of bitmap images.
      */
     public class Controller
     {

@@ -7,6 +7,11 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
+    /* This classes purpose is to create a maze using multiple bitmap resource images 
+     * and making a substring from them. This class is where we can manipulate 
+     * the substring to change the initial map image called onto the windows form. 
+     * These substring block images consist of a wall, kibble within a blank, and a blank area.
+     */
     public class Maze : DataGridView
     {
         private const int NROWSCOLUMNS = 20;                          // Number of cells in each row and column

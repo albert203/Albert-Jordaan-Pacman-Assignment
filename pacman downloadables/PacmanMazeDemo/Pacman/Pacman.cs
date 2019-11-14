@@ -14,7 +14,8 @@ namespace Pacman
      * according to the users input by arrow key, 
      * how Pacman’s movement effects the map as he moves 
      * (aka eats kibble and other entities and leaves the map square blank afterwards). 
-     * It also is draw Pacman onto the form from a specified location. */
+     * It also is draw Pacman onto the form from a specified location. 
+     */
     public class Pacman : Character
     {
         //fields
