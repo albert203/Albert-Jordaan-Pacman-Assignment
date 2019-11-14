@@ -15,7 +15,7 @@ namespace Pacman
         //fields
 
         //constants
-        private const int FORMHEIGHT = 570;
+        private const int FORMHEIGHT = 640;
         private const int FORMWIDTH = 540;
 
         private Maze maze;
@@ -85,6 +85,8 @@ namespace Pacman
         {
             maze.Draw();
             controller.PlayGame();
+
+            label9.Text = controller.Points.ToString();
         }
 
         private void Button1_Click(object sender, EventArgs e)

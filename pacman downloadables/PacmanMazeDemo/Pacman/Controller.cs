@@ -21,17 +21,17 @@ namespace Pacman
 
         private int points;
 
-        private const int GHOSTGREENX = 8;
-        private const int GHOSTGREENY = 8;
+        private const int GHOSTGREENX = 2;
+        private const int GHOSTGREENY = 17;
 
-        private const int GHOSTORANGEX = 9;
+        private const int GHOSTORANGEX =16;
         private const int GHOSTORANGEY = 8;
 
-        private const int GHOSTPURPLEX = 10;
-        private const int GHOSTPURPLEY = 8;
+        private const int GHOSTPURPLEX = 14;
+        private const int GHOSTPURPLEY = 3;
 
-        private const int GHOSTREDX = 11;
-        private const int GHOSTREDY = 8;
+        private const int GHOSTREDX = 7;
+        private const int GHOSTREDY = 11;
 
         public Controller(Maze maze)
         {

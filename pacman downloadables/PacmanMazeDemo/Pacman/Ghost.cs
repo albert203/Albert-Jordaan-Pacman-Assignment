@@ -10,6 +10,7 @@ namespace Pacman
     public class Ghost : Character
     {
         private bool ghostfacingright;
+        private Random random;
 
         public Ghost(List<Bitmap> sprites, Maze maze, Point position)
             : base(sprites, maze, position)
@@ -20,7 +21,8 @@ namespace Pacman
             sprite = sprites[0];
 
             ghostfacingright = false;
-
+            random = new Random();
+            
         }
 
         public override void Draw()
@@ -33,31 +35,33 @@ namespace Pacman
         }
         public override void Move()
         {
+            int randomnum = random.Next(4);
+
             //Moving the character (either pacman or the ghost) to the next grid section if it does not contain a wall. Essentially it is a check wall method
-            switch (direction)
+            switch (randomnum)
             {
-                case Enumdir.Left:
-                    if (maze.Map.Substring((position.Y * GRIDLINESIZE) + position.X - 1, 1) != "w")
+                case 0:
+                    if (maze.Map.Substring((position.Y * GRIDLINESIZE) + position.X - 1, 1) != "w") 
                     {
-                        position = new Point((position.X - 1), position.Y);
+                        position = new Point(position.X - 1, position.Y);
                     }
                     break;
-                case Enumdir.Right:
+                case 1:
                     if (maze.Map.Substring((position.Y * GRIDLINESIZE) + position.X + 1, 1) != "w")
                     {
-                        position = new Point((position.X + 1), position.Y);
+                        position = new Point(position.X + 1, position.Y);
                     }
                     break;
-                case Enumdir.Up:
+                case 2:
                     if (maze.Map.Substring(((position.Y - 1) * GRIDLINESIZE) + position.X, 1) != "w")
                     {
-                        position = new Point((position.X), position.Y - 1);
+                        position = new Point(position.X, position.Y - 1);
                     }
                     break;
-                case Enumdir.Down:
+                case 3:
                     if (maze.Map.Substring(((position.Y + 1) * GRIDLINESIZE) + position.X, 1) != "w")
                     {
-                        position = new Point((position.X), position.Y + 1);
+                        position = new Point(position.X, position.Y + 1);
                     }
                     break;
             }

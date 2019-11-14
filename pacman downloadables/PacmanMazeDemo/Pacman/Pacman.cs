@@ -133,25 +133,25 @@ namespace Pacman
                 case Enumdir.Left:
                     if (maze.Map.Substring((position.Y * GRIDLINESIZE) + position.X - 1, 1) != "w")
                     {
-                        position = new Point((position.X - 1), position.Y);
+                        position = new Point(position.X - 1, position.Y);
                     }
                     break;
                 case Enumdir.Right:
                     if (maze.Map.Substring((position.Y * GRIDLINESIZE) + position.X + 1, 1) != "w")
                     {
-                        position = new Point((position.X + 1), position.Y);
+                        position = new Point(position.X + 1, position.Y);
                     }
                     break;
                 case Enumdir.Up:
                     if (maze.Map.Substring(((position.Y - 1) * GRIDLINESIZE) + position.X, 1) != "w")
                     {
-                        position = new Point((position.X), position.Y - 1);
+                        position = new Point(position.X, position.Y - 1);
                     }
                     break;
                 case Enumdir.Down:
                     if (maze.Map.Substring(((position.Y + 1) * GRIDLINESIZE) + position.X, 1) != "w")
                     {
-                        position = new Point((position.X), position.Y + 1);
+                        position = new Point(position.X, position.Y + 1);
                     }
                     break;
 
