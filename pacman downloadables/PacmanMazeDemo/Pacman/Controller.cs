@@ -7,6 +7,8 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
+    /*
+     */
     public class Controller
     {
         private List<Bitmap> pacsprites;

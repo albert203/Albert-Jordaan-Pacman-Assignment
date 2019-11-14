@@ -7,6 +7,11 @@ using System.Threading;
 
 namespace Pacman
 {
+    /* This is the child class of “Character” that contains the drawing of the ghost 
+     * sprite onto the form, the ghost sprite movement and its functionality of how it 
+     * interacts with other object aspects. The sprite image variation 
+     * is displayed as the timer ticks.
+     */
     public class Ghost : Character
     {
         private bool ghostfacingright;

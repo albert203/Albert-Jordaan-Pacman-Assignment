@@ -10,6 +10,8 @@
  * The aim is to make Pacman eats all of the pellets and avoid the four maze wandering ghosts.
  * The ghosts are trying to catch Pacman, when one of them touches Pac-Man, a life is lost.
  * When all Pacman’s lives have been lost the game ends.
+ * 
+ * Deviations: Due to GiLab being unable to push to the server (because of server space issues) I have pushed up to GitHub instead.
  */
 
 using System;
@@ -24,10 +26,12 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
-    /*This class is where I will display the game playing interface 
-    that contains the Pacman, ghosts, maze (that Pacman must traverse throughout), 
-    and displayed score. Within this class contains user interactables 
-    objects, images, and functionality */ 
+     /* This class is where I will display the game playing interface 
+     * that contains the Pacman, ghosts, maze (that Pacman must traverse throughout), 
+     * and displayed score. Within this class contains user interactables 
+     * objects, images, and functionality 
+     */ 
+
     public partial class Form1 : Form
     {
         //fields
