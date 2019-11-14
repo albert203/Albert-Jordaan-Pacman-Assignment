@@ -7,5 +7,6 @@ namespace Pacman
 {
     class GhostController
     {
+
     }
 }

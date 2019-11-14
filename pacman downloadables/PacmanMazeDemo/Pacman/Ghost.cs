@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace Pacman
 {
     public class Ghost : Character
     {
-        private Bitmap Sprite;
-         
+        private bool ghostfacingright;
 
-        public Ghost(List<Bitmap> sprites, Maze maze, Point position, Enumdir direction)
-            :base(sprites,maze, position)
+        public Ghost(List<Bitmap> sprites, Maze maze, Point position)
+            : base(sprites, maze, position)
         {
-            
+            this.maze = maze;
+            this.position = position;
+            this.sprites = sprites;
+            sprite = sprites[0];
+
+            ghostfacingright = false;
+
         }
 
         public override void Draw()
@@ -55,6 +61,19 @@ namespace Pacman
                     }
                     break;
             }
+        }
+
+        public void animateddirection()
+        {
+            if (ghostfacingright == true)
+            {
+                sprite = sprites[0];
+            }
+            else if (ghostfacingright == false)
+            {
+                sprite = sprites[1];
+            }
+            ghostfacingright = !ghostfacingright;
         }
         public Point Position { get => position; set => position = value; }
     }
