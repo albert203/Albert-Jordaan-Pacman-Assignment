@@ -1,4 +1,18 @@
-﻿using System;
+﻿/* C# Programming Assignment: Pacman
+ * Due: the 15th of November 2019 (15/11/2019)
+ * Completed by: Albert Jordaan
+ * 
+ * Software used to complete code: Microsoft Visual Studio 2019 Software, Github, Gitlab.
+ * 
+ * Aim of the Game:
+ * Control Pacman (a circular sprite entity) using the arrow keys on computer keyboard 
+ * moving Pacman safely through a maze full of pellets. 
+ * The aim is to make Pacman eats all of the pellets and avoid the four maze wandering ghosts.
+ * The ghosts are trying to catch Pacman, when one of them touches Pac-Man, a life is lost.
+ * When all Pacman’s lives have been lost the game ends.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +24,10 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
+    /*This class is where I will display the game playing interface 
+    that contains the Pacman, ghosts, maze (that Pacman must traverse throughout), 
+    and displayed score. Within this class contains user interactables 
+    objects, images, and functionality */ 
     public partial class Form1 : Form
     {
         //fields
