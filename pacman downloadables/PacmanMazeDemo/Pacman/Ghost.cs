@@ -11,8 +11,8 @@ namespace Pacman
         private Bitmap Sprite;
          
 
-        public Ghost(List<Bitmap> sprites, Maze maze, Point position)
-            :base(sprites, maze, position)
+        public Ghost(Bitmap sprites, Maze maze, Point position, Enumdir direction)
+            :base(sprites,maze, position, direction)
         {
             
         }

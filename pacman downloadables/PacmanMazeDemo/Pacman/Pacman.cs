@@ -13,14 +13,26 @@ namespace Pacman
         //fields
         private int life;
         private bool pacopen;
+        private List<Bitmap> sprites;
 
-        public Pacman(List<Bitmap> sprites, Maze maze, Point position) : base(sprites, maze, position)
+        public Pacman(List<Bitmap> sprites, Maze maze, Point position)
+            :base(sprites, maze, position)
         {
             //constructor
-            this.sprites = sprites;
+            sprites = new List<Bitmap>();
+            sprites.Add(Properties.Resources.pacman1right);
+            sprites.Add(Properties.Resources.pacman2right);
+            sprites.Add(Properties.Resources.pacman1left);
+            sprites.Add(Properties.Resources.pacman2left);
+            sprites.Add(Properties.Resources.pacman1up);
+            sprites.Add(Properties.Resources.pacman2up);
+            sprites.Add(Properties.Resources.pacman1down);
+            sprites.Add(Properties.Resources.pacman2down);
+
+
+            
             this.maze = maze;
             this.position = position;
-            sprite = Properties.Resources.pacman1right;
             life = 3;
             pacopen = false;
 
@@ -52,115 +64,163 @@ namespace Pacman
             return eatpellets;
         }
 
+
+        public override void Draw()
+        {
+            //.Rows gets a collection that contains all the rows in that substring (aka data grid view). 
+            //.Cells gets a collection of cells that encompass that row.
+            //We look for the value of the Y position in that row then the X position in that cell giving us the point at which 
+            //we draw the bitmap image onto the map
+            maze.Rows[position.Y].Cells[position.X].Value = sprite;
+        }
+
+
         public void animateddirection()
         {
             switch (direction)
             {
                 case Enumdir.Left:
                     {
-                        sprite = Properties.Resources.ResourceManager.GetObject("pacman;
+                        if (pacopen == true)
+                        {
+                            sprite = sprites[0];
+                        }
+                        else if (pacopen == false)
+                        {
+                            sprite = sprites[1];
+                        }
+
                     }
                     break;
 
                 case Enumdir.Right:
                     {
-                        sprite = Properties.Resources.pacman1right;
+                        if (pacopen == true)
+                        {
+                            sprite = sprites[2];
+                        }
+                        else if (pacopen == false)
+                        {
+                            sprite = sprites[3];
+                        }
+
                     }
                     break;
 
                 case Enumdir.Down:
                     {
-                        sprite = Properties.Resources.pacman1up;
+                        if (pacopen == true)
+                        {
+                            sprite = sprites[4];
+                        }
+                        else if (pacopen == false)
+                        {
+                            sprite = sprites[5];
+                        }
+
                     }
                     break;
 
                 case Enumdir.Up:
                     {
-                        sprite = Properties.Resources.pacman1down;
+                        if (pacopen == true)
+                        {
+                            sprite = sprites[6];
+                        }
+                        else if (pacopen == false)
+                        {
+                            sprite = sprites[7];
+                        }
+
                     }
                     break;
             }
+            pacopen = !pacopen;
 
+        }
+
+        public override void Move()
+        {
+            //Moving the character (either pacman or the ghost) to the next grid section if it does not contain a wall. Essentially it is a check wall method
             switch (direction)
             {
                 case Enumdir.Left:
+                    if (maze.Map.Substring((position.Y * GRIDLINESIZE) + position.X - 1, 1) != "w")
                     {
-                        sprite = Properties.Resources.pacman2right;
+                        position = new Point((position.X - 1), position.Y);
                     }
                     break;
-
                 case Enumdir.Right:
+                    if (maze.Map.Substring((position.Y * GRIDLINESIZE) + position.X + 1, 1) != "w")
                     {
-                        sprite = Properties.Resources.pacman2left;
+                        position = new Point((position.X + 1), position.Y);
                     }
                     break;
-
                 case Enumdir.Up:
+                    if (maze.Map.Substring(((position.Y - 1) * GRIDLINESIZE) + position.X, 1) != "w")
                     {
-                        sprite = Properties.Resources.pacman2up;
+                        position = new Point((position.X), position.Y - 1);
                     }
                     break;
-
                 case Enumdir.Down:
+                    if (maze.Map.Substring(((position.Y + 1) * GRIDLINESIZE) + position.X, 1) != "w")
                     {
-                        sprite = Properties.Resources.pacman2down;
+                        position = new Point((position.X), position.Y + 1);
                     }
                     break;
             }
         }
+
+
+
+        //public void collision()
+        //{
+        //    if (pacman.Bounds.IntersectsWith(ghost1.Bounds) || pacman.Bounds.IntersectsWith(ghost2.Bounds) || pacman.Bounds.IntersectsWith(ghost3.Bounds) || pacman.Bounds.IntersectsWith(ghost4.Bounds))
+        //    {
+        //        if (pacman.Bounds.IntersectsWith(ghost1.Bounds) && !power1)
+        //        {
+        //            eat();
+        //        }
+
+        //        if (pacman.Bounds.IntersectsWith(ghost2.Bounds) && !power2)
+        //        {
+        //            eat();
+        //        }
+
+        //        if (pacman.Bounds.IntersectsWith(ghost3.Bounds) && !power3)
+        //        {
+        //            eat();
+        //        }
+
+        //        if (pacman.Bounds.IntersectsWith(ghost4.Bounds) && !power4)
+        //        {
+        //            eat();
+        //        }
+
+        //        if (power)
+        //        {
+        //            if (pacman.Bounds.IntersectsWith(ghost1.Bounds) && !power1)
+        //            {
+        //                eat();
+        //            }
+
+        //            if (pacman.Bounds.IntersectsWith(ghost2.Bounds) && !power2)
+        //            {
+        //                eat();
+        //            }
+
+        //            if (pacman.Bounds.IntersectsWith(ghost3.Bounds) && !power3)
+        //            {
+        //                eat();
+        //            }
+
+        //            if (pacman.Bounds.IntersectsWith(ghost4.Bounds) && !power4)
+        //            {
+        //                eat();
+        //            }
+        //        }
+
     }
-
-
-
-
-    //public void collision()
-    //{
-    //    if (pacman.Bounds.IntersectsWith(ghost1.Bounds) || pacman.Bounds.IntersectsWith(ghost2.Bounds) || pacman.Bounds.IntersectsWith(ghost3.Bounds) || pacman.Bounds.IntersectsWith(ghost4.Bounds))
-    //    {
-    //        if (pacman.Bounds.IntersectsWith(ghost1.Bounds) && !power1)
-    //        {
-    //            eat();
-    //        }
-
-    //        if (pacman.Bounds.IntersectsWith(ghost2.Bounds) && !power2)
-    //        {
-    //            eat();
-    //        }
-
-    //        if (pacman.Bounds.IntersectsWith(ghost3.Bounds) && !power3)
-    //        {
-    //            eat();
-    //        }
-
-    //        if (pacman.Bounds.IntersectsWith(ghost4.Bounds) && !power4)
-    //        {
-    //            eat();
-    //        }
-
-    //        if (power)
-    //        {
-    //            if (pacman.Bounds.IntersectsWith(ghost1.Bounds) && !power1)
-    //            {
-    //                eat();
-    //            }
-
-    //            if (pacman.Bounds.IntersectsWith(ghost2.Bounds) && !power2)
-    //            {
-    //                eat();
-    //            }
-
-    //            if (pacman.Bounds.IntersectsWith(ghost3.Bounds) && !power3)
-    //            {
-    //                eat();
-    //            }
-
-    //            if (pacman.Bounds.IntersectsWith(ghost4.Bounds) && !power4)
-    //            {
-    //                eat();
-    //            }
-    //        }
-
-
 }
 
 

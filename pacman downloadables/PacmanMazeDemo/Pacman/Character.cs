@@ -11,17 +11,19 @@ namespace Pacman
     {
         //fields
         //newpos
+        protected Bitmap sprite;
         protected const int GRIDLINESIZE = 20;
         protected Maze maze;
         protected Enumdir direction;
         protected Point position;
 
-        public Character(Maze maze, Point position, Enumdir direction)
+        public Character(Bitmap sprite, Maze maze, Point position, Enumdir direction)
         {
             //constructor
             this.maze = maze;
             direction = Enumdir.Right;
             this.position = position;
+            this.sprite = sprite;
         }
 
         //methods
