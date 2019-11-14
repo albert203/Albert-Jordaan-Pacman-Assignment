@@ -177,7 +177,7 @@
             this.label8.BackColor = System.Drawing.Color.Maroon;
             this.label8.Font = new System.Drawing.Font("Modern No. 20", 26.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(595, 1341);
+            this.label8.Location = new System.Drawing.Point(575, 1311);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(232, 90);
             this.label8.TabIndex = 3;
@@ -189,7 +189,7 @@
             this.label9.BackColor = System.Drawing.Color.Maroon;
             this.label9.Font = new System.Drawing.Font("Modern No. 20", 26.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(928, 1341);
+            this.label9.Location = new System.Drawing.Point(813, 1311);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(79, 90);
             this.label9.TabIndex = 4;
