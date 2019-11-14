@@ -13,29 +13,18 @@ namespace Pacman
         //fields
         private int life;
         private bool pacopen;
-        private List<Bitmap> sprites;
 
         public Pacman(List<Bitmap> sprites, Maze maze, Point position)
-            :base(sprites, maze, position)
+            : base(sprites, maze, position)
         {
             //constructor
-            sprites = new List<Bitmap>();
-            sprites.Add(Properties.Resources.pacman1right);
-            sprites.Add(Properties.Resources.pacman2right);
-            sprites.Add(Properties.Resources.pacman1left);
-            sprites.Add(Properties.Resources.pacman2left);
-            sprites.Add(Properties.Resources.pacman1up);
-            sprites.Add(Properties.Resources.pacman2up);
-            sprites.Add(Properties.Resources.pacman1down);
-            sprites.Add(Properties.Resources.pacman2down);
-
-
-            
             this.maze = maze;
             this.position = position;
+            this.sprites = sprites;
+            sprite = sprites[0];
+
             life = 3;
             pacopen = false;
-
         }
 
         public void lives()
@@ -68,8 +57,8 @@ namespace Pacman
         public override void Draw()
         {
             //.Rows gets a collection that contains all the rows in that substring (aka data grid view). 
-            //.Cells gets a collection of cells that encompass that row.
-            //We look for the value of the Y position in that row then the X position in that cell giving us the point at which 
+            //.Cells gets all the cell of the Rows Y position.
+            //We look for the value of the Y position in that row then the X position in that cell within that row giving us the point at which 
             //we draw the bitmap image onto the map
             maze.Rows[position.Y].Cells[position.X].Value = sprite;
         }
@@ -79,7 +68,7 @@ namespace Pacman
         {
             switch (direction)
             {
-                case Enumdir.Left:
+                case Enumdir.Right:
                     {
                         if (pacopen == true)
                         {
@@ -89,11 +78,10 @@ namespace Pacman
                         {
                             sprite = sprites[1];
                         }
-
                     }
                     break;
 
-                case Enumdir.Right:
+                case Enumdir.Left:
                     {
                         if (pacopen == true)
                         {
@@ -103,11 +91,10 @@ namespace Pacman
                         {
                             sprite = sprites[3];
                         }
-
                     }
                     break;
 
-                case Enumdir.Down:
+                case Enumdir.Up:
                     {
                         if (pacopen == true)
                         {
@@ -121,7 +108,7 @@ namespace Pacman
                     }
                     break;
 
-                case Enumdir.Up:
+                case Enumdir.Down:
                     {
                         if (pacopen == true)
                         {
@@ -136,7 +123,6 @@ namespace Pacman
                     break;
             }
             pacopen = !pacopen;
-
         }
 
         public override void Move()
@@ -168,6 +154,7 @@ namespace Pacman
                         position = new Point((position.X), position.Y + 1);
                     }
                     break;
+
             }
         }
 

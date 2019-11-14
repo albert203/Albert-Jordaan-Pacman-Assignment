@@ -25,9 +25,9 @@ namespace Pacman
                                        "wkkkkkkwkbbbkwkkkkkw" +
                                        "wwkwwwkwkbbbkwkwwwww" +
                                        "bkkkkkkkkwwwkkkkkkkb" +
-                                       "wwkwwwwkwwwwwkwwwkww" +
+                                       "wwkwwwwkwwbwwkwwwkww" +
                                        "wkkkwkkkkkkkkkwwkkkw" +
-                                       "wkkkkkwwwkbkwwwkkkkw" +
+                                       "wkkkkkwwwkkkwwwkkkkw" +
                                        "wkwwkwwwwkkkwwwkwwkw" +
                                        "wkwwkwwwkkkkkwwkwwkw" +
                                        "wkkkkwwwkwkwkwwkkkkw" +

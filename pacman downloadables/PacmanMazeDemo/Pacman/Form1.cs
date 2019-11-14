@@ -15,7 +15,7 @@ namespace Pacman
         //fields
 
         //constants
-        private const int FORMHEIGHT = 540;
+        private const int FORMHEIGHT = 570;
         private const int FORMWIDTH = 540;
 
         private Maze maze;
@@ -24,7 +24,7 @@ namespace Pacman
         public Form1()
         {
             InitializeComponent();
-            controller = new Controller(maze);
+           
             //constuctor, intialising newly called components 
             //labels = new List<object>();
 
@@ -39,10 +39,10 @@ namespace Pacman
             Left = 0;
             Height = FORMHEIGHT;
             Width = FORMWIDTH;
-
+            
             // create a Bitmap object for each image you want to display
-            Bitmap k = Properties.Resources.kibble;    
-            Bitmap w = Properties.Resources.wall;
+            Bitmap k = Properties.Resources.kibble;
+            Bitmap w = Properties.Resources.brickwall;
             Bitmap b = Properties.Resources.blank;
 
             // create an instance of a Maze:
@@ -50,8 +50,10 @@ namespace Pacman
 
             // important, need to add the maze object to the list of controls on the form
             Controls.Add(maze);
+            controller = new Controller(maze);
 
             // remember the Timer Enabled Property is set to false as a default
+            timer1.Interval = 200;
             timer1.Enabled = true;
         }
 
@@ -119,6 +121,11 @@ namespace Pacman
             {
                 Close();
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

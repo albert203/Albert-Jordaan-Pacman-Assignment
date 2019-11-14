@@ -11,8 +11,8 @@ namespace Pacman
         private Bitmap Sprite;
          
 
-        public Ghost(Bitmap sprites, Maze maze, Point position, Enumdir direction)
-            :base(sprites,maze, position, direction)
+        public Ghost(List<Bitmap> sprites, Maze maze, Point position, Enumdir direction)
+            :base(sprites,maze, position)
         {
             
         }
@@ -20,8 +20,8 @@ namespace Pacman
         public override void Draw()
         {
             //.Rows gets a collection that contains all the rows in that substring (aka data grid view). 
-            //.Cells gets a collection of cells that encompass that row.
-            //We look for the value of the Y position in that row then the X position in that cell giving us the point at which 
+            //.Cells gets all the cell of the Rows Y position.
+            //We look for the value of the Y position in that row then the X position in that cell within that row giving us the point at which 
             //we draw the bitmap image onto the map
             maze.Rows[position.Y].Cells[position.X].Value = sprite;
         }

@@ -10,30 +10,31 @@ namespace Pacman
     public abstract class Character
     {
         //fields
-        //newpos
+        protected List<Bitmap> sprites;
         protected Bitmap sprite;
-        protected const int GRIDLINESIZE = 20;
+        protected Bitmap currentsprite;
         protected Maze maze;
-        protected Enumdir direction;
         protected Point position;
+        protected Enumdir direction;
 
-        public Character(Bitmap sprite, Maze maze, Point position, Enumdir direction)
+        //constants
+        protected const int GRIDLINESIZE = 20;
+        
+        public Character(List<Bitmap> sprites, Maze maze, Point position)
         {
             //constructor
             this.maze = maze;
-            direction = Enumdir.Right;
             this.position = position;
-            this.sprite = sprite;
+            this.sprites = sprites;
+            sprite = sprites[0];
+
+            direction = Enumdir.Up;
         }
 
         //methods
-
-        //Drawing the Bitmap sprite onto the form's maze
         public abstract void Draw();
         public abstract void Move();
        
-
         public Enumdir Direction { get => direction; set => direction = value; }
-        
     }
 }
