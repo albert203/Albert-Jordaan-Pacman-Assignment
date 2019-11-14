@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace Pacman
@@ -35,17 +36,20 @@ namespace Pacman
             pacopen = false;
         }
 
+        //If pacmans life reduces to 0, then pacman loses the game and the appliction ends
         public void lives()
         {
             if (life == 0)
             {
-                //pause for 2 seconds after losing the game.
-                Thread.Sleep(2000);
+                //pause for 1 seconds after losing the game.
+                Thread.Sleep(1000);
+                Application.Exit();
                 //endgame();
             }
         }
 
-
+        /*Changes the grid image from kibble to a blank grid, this method is called in so pacman 
+        can eat kibble or at least look like he is*/
         public bool Eatpellets()
         {
             bool eatpellets = false;
@@ -61,7 +65,7 @@ namespace Pacman
             return eatpellets;
         }
 
-
+        
         public override void Draw()
         {
             //.Rows gets a collection that contains all the rows in that substring (aka data grid view). 
@@ -71,7 +75,7 @@ namespace Pacman
             maze.Rows[position.Y].Cells[position.X].Value = sprite;
         }
 
-
+        // changes the sprite image according to the user input movement to suit the pacman image variations.
         public void animateddirection()
         {
             switch (direction)
@@ -133,9 +137,10 @@ namespace Pacman
             pacopen = !pacopen;
         }
 
+        //Moving the character (either pacman or the ghost) to the next grid section if it does not contain a wall. Essentially it is a check wall method
         public override void Move()
         {
-            //Moving the character (either pacman or the ghost) to the next grid section if it does not contain a wall. Essentially it is a check wall method
+            //keypress input indicates the direction it moves
             switch (direction)
             {
                 case Enumdir.Left:
@@ -162,59 +167,8 @@ namespace Pacman
                         position = new Point(position.X, position.Y + 1);
                     }
                     break;
-
             }
         }
-
-
-
-        //public void collision()
-        //{
-        //    if (pacman.Bounds.IntersectsWith(ghost1.Bounds) || pacman.Bounds.IntersectsWith(ghost2.Bounds) || pacman.Bounds.IntersectsWith(ghost3.Bounds) || pacman.Bounds.IntersectsWith(ghost4.Bounds))
-        //    {
-        //        if (pacman.Bounds.IntersectsWith(ghost1.Bounds) && !power1)
-        //        {
-        //            eat();
-        //        }
-
-        //        if (pacman.Bounds.IntersectsWith(ghost2.Bounds) && !power2)
-        //        {
-        //            eat();
-        //        }
-
-        //        if (pacman.Bounds.IntersectsWith(ghost3.Bounds) && !power3)
-        //        {
-        //            eat();
-        //        }
-
-        //        if (pacman.Bounds.IntersectsWith(ghost4.Bounds) && !power4)
-        //        {
-        //            eat();
-        //        }
-
-        //        if (power)
-        //        {
-        //            if (pacman.Bounds.IntersectsWith(ghost1.Bounds) && !power1)
-        //            {
-        //                eat();
-        //            }
-
-        //            if (pacman.Bounds.IntersectsWith(ghost2.Bounds) && !power2)
-        //            {
-        //                eat();
-        //            }
-
-        //            if (pacman.Bounds.IntersectsWith(ghost3.Bounds) && !power3)
-        //            {
-        //                eat();
-        //            }
-
-        //            if (pacman.Bounds.IntersectsWith(ghost4.Bounds) && !power4)
-        //            {
-        //                eat();
-        //            }
-        //        }
-
     }
 }
 

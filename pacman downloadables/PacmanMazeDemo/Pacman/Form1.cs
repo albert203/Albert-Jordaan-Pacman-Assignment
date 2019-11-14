@@ -11,7 +11,8 @@
  * The ghosts are trying to catch Pacman, when one of them touches Pac-Man, a life is lost.
  * When all Pacman’s lives have been lost the game ends.
  * 
- * Deviations: Due to GiLab being unable to push to the server (because of server space issues) I have pushed up to GitHub instead. 
+ * Deviations: Due to GiLab being unable to push to the server (because of server space issues) 
+ * I have pushed up to GitHub instead of Gitlab and have done my commits also on github. 
  */
 
 using System;
@@ -47,7 +48,7 @@ namespace Pacman
         {
             //when the start button is pressed it will intialise the form with its maze components and a timer set to an interval of 150;
             InitializeComponent();
-           
+            MessageBox.Show("You are Pacman, A yellow hungry circle.\nYou must manevouer throughout the maze avoiding the ghosts and eat all the kibble to win! Click on play game to play,\n and quit game to exit the application");
             // set the Properties of the form:
             Top = 0;
             Left = 0;
@@ -73,38 +74,36 @@ namespace Pacman
 
         private void label1_Click(object sender, EventArgs e)
         {
-            //clicking on "play game" in the menu, this hides the menu panel and resets the game with a small delay to load into the new game. Also brings in a 3,2,1 start timer before the game starts
+            /*clicking on "play game" in the menu, this hides the menu panel 
+            and resets the game with a small delay to load into the new game. 
+            Also brings in a 3,2,1 start timer before the game starts*/
             panel1.Visible = false;
             Thread.Sleep(1000);
-            MessageBox.Show("You are Pacman, A yellow hungry circle.\nYou must manevouer throughout the maze avoiding the ghosts and eat all the kibble to win!");
-
         }
+
+        //clicking on quit button in the menu exits application
         private void label2_Click(object sender, EventArgs e)
         {
-            //clicking on quit button in the menu
             Application.Exit();
         }
 
+        //each timer interval tick of the timer it will call these methods that draw the maze and the sprites movement and functionality. Also calls in the points 
+        //accumulated to a label; showing off the score.
         private void timer1_Tick(object sender, EventArgs e)
         {
             maze.Draw();
             controller.PlayGame();
 
             label9.Text = controller.Points.ToString();
+            if (controller.WinGame)
+            {
+                timer1.Enabled = false;
+                MessageBox.Show("Well done you won! with a score of" + label9.Text);
+                Application.Exit();
+            }
         }
 
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            //pacman and ghosts begins game at start position
-            //StartPosition = true;
-
-            //Pacman.Lives();
-            //Points();
-            //panel1.visible = false;
-            //resetall();
-        }
-
-        //player inputs an arrow key then it detects which pacman animation to produce for that movement
+        //player inputs an arrow key then it detects which pacman animation it must use when producing that movement
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
@@ -129,9 +128,6 @@ namespace Pacman
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            
-        }
+       
     }
 }

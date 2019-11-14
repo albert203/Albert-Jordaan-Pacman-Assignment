@@ -19,6 +19,7 @@ namespace Pacman
         private const int SPACESIZE = 4;
         private const int NKIBBLES = 12;
 
+        //The string diagram containing multiple resource files
         private const string INITMAP = "wwwwwwwwwwbwwwwwwwww" +
                                        "wkkkkkkwwwkwwkkkkkkw" +
                                        "wkwkkwkwwwkwwkwkkwkw" +

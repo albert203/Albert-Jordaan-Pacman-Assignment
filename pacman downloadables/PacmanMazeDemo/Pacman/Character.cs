@@ -37,7 +37,7 @@ namespace Pacman
             direction = Enumdir.Up;
         }
 
-        //methods
+        //parents methods that are passed down to the child "Pacman" and "Ghost" classes because they both have these script similarities
         public abstract void Draw();
         public abstract void Move();
        

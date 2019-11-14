@@ -38,11 +38,13 @@ namespace Pacman
             //we draw the bitmap image onto the map
             maze.Rows[position.Y].Cells[position.X].Value = sprite;
         }
+
+        //Moving the character (either pacman or the ghost) to the next grid section if it does not contain a wall. Essentially it is a check wall method
         public override void Move()
         {
+            //makes a random number between 0 and 3, this then chooses a case and inputs the a movement that is random into the sprite animation
             int randomnum = random.Next(4);
 
-            //Moving the character (either pacman or the ghost) to the next grid section if it does not contain a wall. Essentially it is a check wall method
             switch (randomnum)
             {
                 case 0:
@@ -72,6 +74,8 @@ namespace Pacman
             }
         }
 
+        //variations in the sprite image change each timer tick, so it looks like the ghost 
+        //is moving his eyes each movement, back and forth.
         public void animateddirection()
         {
             if (ghostfacingright == true)

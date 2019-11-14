@@ -17,6 +17,7 @@ namespace Pacman
         private List<Bitmap> pacsprites;
         private Pacman pacman;
         private Ghost ghost;
+        private Maze maze;
 
         private List<Ghost> allghosts;
         private List<Bitmap> ghostgreensprites;
@@ -25,11 +26,12 @@ namespace Pacman
         private List<Bitmap> ghostredsprites;
 
         private int points;
+        private bool wingame;
 
         private const int GHOSTGREENX = 2;
         private const int GHOSTGREENY = 17;
 
-        private const int GHOSTORANGEX =16;
+        private const int GHOSTORANGEX = 16;
         private const int GHOSTORANGEY = 8;
 
         private const int GHOSTPURPLEX = 14;
@@ -81,16 +83,18 @@ namespace Pacman
             allghosts.Add(new Ghost(ghostorangesprites, maze, new Point(GHOSTORANGEX, GHOSTORANGEY)));
             allghosts.Add(new Ghost(ghostpurplesprites, maze, new Point(GHOSTPURPLEX, GHOSTPURPLEY)));
             allghosts.Add(new Ghost(ghostredsprites, maze, new Point(GHOSTREDX, GHOSTREDY)));
-            
+
             //reseting score when new game occurs - starting at 0
             points = 0;
         }
 
+        //when a new direction input has been detected it changes direction according to the latest keypress event.
         public void Changepacmandirection(Enumdir direction)
         {
             pacman.Direction = direction;
         }
 
+        //Moves each ghost sprite out of the four sprites according to my move method
         public void GhostsMove()
         {
             //The purpose of the MoveGhosts method is to loop through all the ghosts and call their move method.
@@ -100,6 +104,7 @@ namespace Pacman
             }
         }
 
+        //draws each of the four ghosts and adjust the image variation to what it should be
         public void GhostsDraw()
         {
             //The purpose of the Draw ghosts method is to loop through the ghosts calling their animate and then draw methods.
@@ -110,21 +115,31 @@ namespace Pacman
             }
         }
 
+        
+        //calls in the important methods of drawing the pacman and ghosts sprites 
+        //along with its movement scripts
         public void PlayGame()
         {
             pacman.animateddirection();
             pacman.Draw();
             pacman.Move();
 
-            //calls in the foreach methods to draw and provide movementfor the ghosts
+            //calls in the foreach methods to draw and provide movement for the ghosts
             GhostsMove();
             GhostsDraw();
 
+            //each time pacman eats a pellet it increases his score by 1;
             if (pacman.Eatpellets())
             {
                 points++;
             }
+
+            //if (maze.NKibbles == points)
+            //{
+            //    wingame = true;
+            //}
         }
         public int Points { get => points; set => points = value; }
+        public bool WinGame { get => wingame; set => wingame = value; }
     }
 }
