@@ -115,7 +115,7 @@ namespace Pacman
             }
         }
 
-        
+
         //calls in the important methods of drawing the pacman and ghosts sprites 
         //along with its movement scripts
         public void PlayGame()
@@ -132,6 +132,14 @@ namespace Pacman
             if (pacman.Eatpellets())
             {
                 points++;
+                if (points == 10)
+                {
+                    points += 1;
+                }
+                if (points == 25)
+                {
+                    points += 5;
+                }
             }
 
             //if (maze.NKibbles == points)

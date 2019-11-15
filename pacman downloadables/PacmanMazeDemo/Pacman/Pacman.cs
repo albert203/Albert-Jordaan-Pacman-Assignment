@@ -64,7 +64,6 @@ namespace Pacman
             }
             return eatpellets;
         }
-
         
         public override void Draw()
         {

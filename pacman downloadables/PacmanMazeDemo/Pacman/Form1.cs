@@ -128,6 +128,13 @@ namespace Pacman
             }
         }
 
-       
+        //Click on the pause game button to pause the 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!controller.WinGame)
+            {
+                timer1.Enabled = !timer1.Enabled;
+            }
+        }
     }
 }
